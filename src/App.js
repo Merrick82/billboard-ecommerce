@@ -1,18 +1,20 @@
-import appLogo from './assets/icons/billboard-logo.jpg';
+import appLogo from './assets/icons/ticket-logo.svg';
+import NavBar from './components/navbar/navbar';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <NavBar />
+      <body className="App-body">
         <img src={appLogo} className="App-logo" alt="logo" />
         <h2>
-          Bienvenido a Billboard-eCommerce
+          Bienvenido a Billboard-Shop
         </h2>
         <p>
-          El lugar dónde encontrarás películas, series, recitales y más!!
+          El lugar dónde encontrarás películas, series, comics, música y más!!
         </p>
-      </header>
+      </body>
     </div>
   );
 }
