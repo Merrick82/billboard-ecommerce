@@ -1,5 +1,6 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import appLogo from '../../assets/icons/ticket-logo-white.svg';
+import CartWidget from '../cartWidget/cartWidget';
 import './navbar.css';
 
 function NavBar() {
@@ -15,6 +16,7 @@ function NavBar() {
                 <li><a href="http://www.imdb.com/chart/toptv">Series</a></li>
                 <li><a href="http://www.imdb.com/nycc">Comics</a></li>
                 <li><a href="http://www.allmusic.com">Musica</a></li>
+                <CartWidget />
             </ul>
         </div>
       </nav>
