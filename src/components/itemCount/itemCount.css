@@ -1,0 +1,26 @@
+.itemQty {
+    width: 100%;
+    margin: 1.5rem 0;
+    display: flex;
+}
+
+.itemQty button {
+    width: 20%;
+    border: none;
+    padding: 0.5rem;
+    outline: none;
+    cursor: pointer;
+    background: white;
+    border-radius: 1rem;
+    color: black;
+    font-size: 1.5rem;
+}
+
+.itemQty input {
+    width: 110%;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    outline: none;
+    border-bottom: none !important;
+}

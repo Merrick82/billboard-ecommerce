@@ -1,0 +1,22 @@
+.centerImage {
+    width: 97%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addWidget {
+    border-radius: 6px;
+    background-color: #ee6e73;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.addWidget:focus {
+    background-color: #ee6e73;
+}
