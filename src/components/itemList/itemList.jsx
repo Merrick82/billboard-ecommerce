@@ -18,7 +18,7 @@ function ItemList() {
             {
                 items.length ?
                 items.map((item) => (
-                    <Item key={item.id} title={item.title} price={item.price} urlCover={item.urlCover} />
+                    <Item key={item.id} itemId={item.id} title={item.title} price={item.price} stock={item.stock} urlCover={item.urlCover} />
                 ))
                 : <p className="loading">Cargando productos...</p>
             }

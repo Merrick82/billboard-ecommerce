@@ -1,7 +1,9 @@
 .itemQty {
-    width: 100%;
+    width: 50%;
     margin: 1.5rem 0;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .itemQty button {
