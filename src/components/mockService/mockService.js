@@ -1,22 +1,55 @@
-import {getMoviesList} from '../utils/movieUtils.js';
+import {getCategoriesList, getProductList, getFeaturedProductsList} from '../utils/mockDataUtils.js';
 
-// Settea la lista de peliculas que se creo en movieUtils.js
-const moviesList = getMoviesList();
+// Settea la lista de categorias que se creo en mockDataUtils.js
+const categoriesList = getCategoriesList();
 
-export function getMovies() {
+// Settea la lista de productos que se creo en mockDataUtils.js
+const productList = getProductList();
+
+// Settea la lista de productos destacados que se creo en mockDataUtils.js
+const featuredProductList = getFeaturedProductsList();
+
+export function getCategories() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(moviesList);
-            reject('Hubo un problema al querer consultar las peliculas');
+            resolve(categoriesList);
+            reject('Hubo un problema al querer consultar las categorias');
+        }, 100)
+    });
+}
+
+export function getCategoryNameById(categoryId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(categoriesList.find(category => category.id === Number(categoryId)).title);
+            reject('Hubo un problema al querer obtener el nombre de la categoria');
+        }, 500)
+    });
+}
+
+export function getProductsByCategoryId(categoryId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(productList.filter(product => product.category === Number(categoryId)));
+            reject('Hubo un problema al querer consultar los productos');
         }, 2000)
     });
 }
 
-export function getMovieById(id) {
+export function getProductById(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(moviesList.find(movie => movie.id === id));
+            resolve(productList.find(product => product.id === Number(id)));
             reject('Hubo un problema al querer consultar el detalle');
-        }, 2000)
+        }, 200)
+    });
+}
+
+export function getFeaturedProducts() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(featuredProductList);
+            reject('Hubo un problema al querer consultar los productos destacados');
+        }, 100)
     });
 }

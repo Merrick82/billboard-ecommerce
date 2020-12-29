@@ -1,18 +1,18 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import './itemList.css';
 import Item from '../item/item';
-import {getMovies} from '../mockService/mockService.js';
+import {getProductsByCategoryId} from '../mockService/mockService.js';
 import {useState, useEffect} from 'react';
 
-function ItemList() {
+function ItemList(props) {
+    const mockService = getProductsByCategoryId(props.categoryId);
     const [items, setItems] = useState([]);
-    const mockService = getMovies();
 
     // Simula consumir una api
     useEffect(() => {
         mockService.then(rta => setItems(rta)).catch(error => alert(error));
     }, []);
-    
+
     return (
         <div className="row">
             {

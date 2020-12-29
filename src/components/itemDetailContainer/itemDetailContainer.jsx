@@ -1,12 +1,14 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import './itemDetailContainer.css';
 import ItemDetail from '../itemDetail/itemDetail';
-import {getMovieById} from '../mockService/mockService.js';
+import {getProductById} from '../mockService/mockService.js';
 import {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 
-function ItemDetailContainer(props) {
+function ItemDetailContainer() {
+    const { id } = useParams();
     const [item, setItem] = useState({});
-    const mockService = getMovieById(props.itemId);
+    const mockService = getProductById(id);
 
     // Simula consumir una api
     useEffect(() => {
