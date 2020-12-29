@@ -18,7 +18,7 @@ function ItemListContainer() {
 
     return (
         <>
-            <h2>{categoryName}</h2>
+            <h2 className="text">{categoryName}</h2>
             <ItemList categoryId={categoryId}/>
         </>
     );

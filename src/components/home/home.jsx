@@ -15,7 +15,7 @@ function Home() {
 
     return (
       <div className="row">
-        <h2>Productos Destacados</h2>
+        <h2 className="text">Productos Destacados</h2>
         {
             items.length ?
             items.map((item) => (

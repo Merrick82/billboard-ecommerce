@@ -1,9 +1,14 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import './cartWidget.css';
 
-function CartWidget() {
+function CartWidget({action}) {
     return (
-        <li><i className="material-icons widget-space">shopping_cart</i></li>
+        <li>
+            <div onClick={action}>
+                <i className="material-icons widget-space">shopping_cart</i>
+                <small className="notification-cart">1</small>
+            </div>
+        </li>
     );
   }
   

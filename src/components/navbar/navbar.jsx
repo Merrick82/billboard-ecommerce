@@ -5,10 +5,16 @@ import './navbar.css';
 import {getCategories} from '../mockService/mockService.js';
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import CartSlide from '../cartSlide/cartSlide';
 
 function NavBar() {
     const [categories, setCategories] = useState([]);
+    const [showWidgetCart, setShowWidgetCart] = useState(false);
     const mockService = getCategories();
+
+    const openWidgetCart = () => {
+        setShowWidgetCart(!showWidgetCart);
+    }
 
     // Simula consumir una api
     useEffect(() => {
@@ -28,7 +34,8 @@ function NavBar() {
                       <li key={category.id}><Link to={`${category.route}/${category.id}`}>{category.title}</Link></li>
                   ))
               }
-              <CartWidget />
+              <CartWidget action={openWidgetCart}/>
+              <CartSlide show={showWidgetCart} action={openWidgetCart}/>
             </ul>
         </div>
       </nav>
