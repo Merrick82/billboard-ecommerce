@@ -1,8 +1,12 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import './itemDetail.css';
 import ItemCount from '../itemCount/itemCount';
+import { useHistory } from 'react-router-dom';
 
 function ItemDetail({movie}) {
+    const history = useHistory();
+    const handleClick = () => history.push('/cart');
+
     return (
         <div className="container">
             <div className="movieTitle">
@@ -20,7 +24,7 @@ function ItemDetail({movie}) {
             <div className="card-content space">
                 <h4><strong>Precio: </strong>$ {movie.price}</h4>
                 <ItemCount maxItems={movie.stock} />
-                <button className="addWidget">Agregar al carrito</button>
+                <button className="addWidget" onClick={handleClick}>Agregar al carrito</button>
             </div>
         </div>
     );

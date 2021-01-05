@@ -5,6 +5,7 @@ import Home from './components/home/home';
 import Footer from './components/footer/footer';
 import Error404 from './components/error404/index';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Cart from './components/cart/cart';
 import './App.css';
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/detail/:id">
             <ItemDetailContainer />
+          </Route>
+          <Route exact path="/cart" component={Cart}>
+            <Cart />
           </Route>
           <Route path="*">
             <Error404 />
