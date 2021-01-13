@@ -16,7 +16,7 @@ function ItemDetailContainer() {
     }, []);
 
     return (
-        <ItemDetail movie={item} />
+        <ItemDetail item={item} />
     );
   }
   
