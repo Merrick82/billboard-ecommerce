@@ -28,21 +28,38 @@ function ItemCount({item}) {
     }
     
     const onAdd = () => {
-        setData(
-            {
-                ...data, 
-                items: [...data.items, item],
-                itemsQty: data.itemsQty + itemQty
-            }
-        );
+        if (isOnCart(item.id)) {
+            item.quantity = item.quantity + itemQty;
+
+            let itemsWithoutTheseItem = data.items.filter(prod => prod.id !== item.id);
+            itemsWithoutTheseItem.push(item);
+
+            setData(
+                {
+                    items: itemsWithoutTheseItem,
+                    itemsQty: data.itemsQty + itemQty
+                }
+            );
+        } else {
+            let itemToAdd = item;
+            itemToAdd.quantity = itemToAdd.quantity + itemQty;
+
+            setData(
+                {
+                    ...data, 
+                    items: [...data.items, itemToAdd],
+                    itemsQty: data.itemsQty + itemQty
+                }
+            );
+        }
 
         history.push('/cart');
     }
 
-    const isOnCart = (id) => {
+    function isOnCart(id) {
         let product = data.items && data.items.filter((item) => item.id === Number(id));
-
-        return product ? true : false;
+        console.log('isOnCart', product);
+        return product.length ? true : false;
     }
         
     return (

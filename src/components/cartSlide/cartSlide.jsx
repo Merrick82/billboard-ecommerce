@@ -1,9 +1,10 @@
 import './cartSlide.css';
+import Cart from '../cart/cart';
 
 function CartSlide({show, action}) {
     return (
         <div className={`widgetCart ${show ? 'open' : 'close'}`}>
-            <p>Soy un widget</p>
+            <Cart />
             <button onClick={action}>Cerrar widget</button>
         </div>
     )

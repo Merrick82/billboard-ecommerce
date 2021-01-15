@@ -3,14 +3,16 @@ import appLogo from '../../assets/icons/ticket-logo-white.svg';
 import CartWidget from '../cartWidget/cartWidget';
 import './navbar.css';
 import {getCategories} from '../mockService/mockService.js';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import CartSlide from '../cartSlide/cartSlide';
+import { Store } from '../../store';
 
 function NavBar() {
     const [categories, setCategories] = useState([]);
     const [showWidgetCart, setShowWidgetCart] = useState(false);
     const mockService = getCategories();
+    const [data, setData] = useContext(Store);
 
     const openWidgetCart = () => {
         setShowWidgetCart(!showWidgetCart);
@@ -35,7 +37,7 @@ function NavBar() {
                   ))
               }
               <CartWidget action={openWidgetCart}/>
-              <CartSlide show={showWidgetCart} action={openWidgetCart}/>
+              {data.itemsQty > 0 && <CartSlide show={showWidgetCart} action={openWidgetCart}/>}
             </ul>
         </div>
       </nav>
