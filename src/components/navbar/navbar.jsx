@@ -7,6 +7,8 @@ import {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import CartSlide from '../cartSlide/cartSlide';
 import { Store } from '../../store';
+// import { getFirestore } from '../../database/dbconf';
+// import { getCategoriesFromDB } from '../databaseService/databaseService';
 
 function NavBar() {
     const [categories, setCategories] = useState([]);
@@ -18,6 +20,26 @@ function NavBar() {
         setShowWidgetCart(!showWidgetCart);
     }
 
+    // const db = getFirestore();
+    // let arr = [];
+
+    // const getCategoriesDB = () => {
+    //   db.collection('categories').get()
+    //   .then(docs => {
+    //       docs.forEach(doc => {
+    //         console.log(doc.id);
+    //         console.log(doc.data());
+    //         arr.push(doc.data());
+    //       });
+
+    //       setCategories(arr);
+    //     }
+        
+    //     ).catch(e => console.log(e));
+    //   }
+      
+    //   console.log(getCategoriesDB());
+      
     // Simula consumir una api
     useEffect(() => {
         mockService.then(rta => setCategories(rta)).catch(error => alert(error));
