@@ -1,48 +1,43 @@
 import 'materialize-css/dist/css/materialize.min.css';
+import './navbar.css';
 import appLogo from '../../assets/icons/ticket-logo-white.svg';
 import CartWidget from '../cartWidget/cartWidget';
-import './navbar.css';
-import {getCategories} from '../mockService/mockService.js';
 import {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import CartSlide from '../cartSlide/cartSlide';
 import { Store } from '../../store';
-// import { getFirestore } from '../../database/dbconf';
-// import { getCategoriesFromDB } from '../databaseService/databaseService';
+import { getFirestore } from '../../database/dbconf';
 
 function NavBar() {
     const [categories, setCategories] = useState([]);
     const [showWidgetCart, setShowWidgetCart] = useState(false);
-    const mockService = getCategories();
     const [data, setData] = useContext(Store);
+    const db = getFirestore();
 
     const openWidgetCart = () => {
         setShowWidgetCart(!showWidgetCart);
     }
 
-    // const db = getFirestore();
-    // let arr = [];
+    const getCategoriesFromDB = () => {
+      db.collection('categories').get()
+      .then(docs => {
+          let arr = [];
 
-    // const getCategoriesDB = () => {
-    //   db.collection('categories').get()
-    //   .then(docs => {
-    //       docs.forEach(doc => {
-    //         console.log(doc.id);
-    //         console.log(doc.data());
-    //         arr.push(doc.data());
-    //       });
+          docs.forEach(doc => {
+            console.log(doc.id);
+            console.log(doc.data());
+            arr.push({
+              id: doc.id, 
+              data: doc.data()
+            });
+          });
 
-    //       setCategories(arr);
-    //     }
-        
-    //     ).catch(e => console.log(e));
-    //   }
+          setCategories(arr);
+        }).catch(e => console.log(e));
+      }
       
-    //   console.log(getCategoriesDB());
-      
-    // Simula consumir una api
     useEffect(() => {
-        mockService.then(rta => setCategories(rta)).catch(error => alert(error));
+        getCategoriesFromDB();
     }, []);
 
     return (
@@ -55,7 +50,7 @@ function NavBar() {
             <ul id="nav-bar" className="left hide-on-med-and-down">
               {
                   categories.map((category) => (
-                      <li key={category.id}><Link to={`${category.route}/${category.id}`}>{category.title}</Link></li>
+                      <li key={category.id}><Link to={`${category.data.route}/${category.id}`}>{category.data.title}</Link></li>
                   ))
               }
               <CartWidget action={openWidgetCart}/>
