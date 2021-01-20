@@ -4,15 +4,15 @@ import 'materialize-css/dist/css/materialize.min.css';
 import './itemCount.css';
 import {Store} from '../../store';
 
-function ItemCount({item}) {
+function ItemCount(props) {
     const [data, setData] = useContext(Store);
     const [itemQty, setQty] = useState(1);
     const history = useHistory();
     
     function clicker(isSum) {
         if (isSum) {
-            if (itemQty >= item.stock) {
-                alert(`El maximo permitido es ${item.stock}`);
+            if (itemQty >= props.item.stock) {
+                alert(`El maximo permitido es ${props.item.stock}`);
                 return;
             }
             
@@ -28,11 +28,11 @@ function ItemCount({item}) {
     }
     
     const onAdd = () => {
-        if (isOnCart(item.id)) {
-            item.quantity = item.quantity + itemQty;
+        if (isOnCart(props.itemId)) {
+            props.item.quantity = props.item.quantity + itemQty;
 
-            let itemsWithoutTheseItem = data.items.filter(prod => prod.id !== item.id);
-            itemsWithoutTheseItem.push(item);
+            let itemsWithoutTheseItem = data.items.filter(prod => prod.id !== props.itemId);
+            itemsWithoutTheseItem.push(props.item);
 
             setData(
                 {
@@ -41,7 +41,7 @@ function ItemCount({item}) {
                 }
             );
         } else {
-            let itemToAdd = item;
+            let itemToAdd = props.item;
             itemToAdd.quantity = itemToAdd.quantity + itemQty;
 
             setData(

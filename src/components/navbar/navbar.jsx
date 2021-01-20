@@ -24,8 +24,6 @@ function NavBar() {
           let arr = [];
 
           docs.forEach(doc => {
-            console.log(doc.id);
-            console.log(doc.data());
             arr.push({
               id: doc.id, 
               data: doc.data()
