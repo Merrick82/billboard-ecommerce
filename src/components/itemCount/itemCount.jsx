@@ -29,10 +29,11 @@ function ItemCount(props) {
     
     const onAdd = () => {
         if (isOnCart(props.itemId)) {
-            props.item.quantity = props.item.quantity + itemQty;
-
+            let item = data.items.filter(prod => prod.id === props.itemId)[0];
+            item.quantity = item.quantity + itemQty;
+            
             let itemsWithoutTheseItem = data.items.filter(prod => prod.id !== props.itemId);
-            itemsWithoutTheseItem.push(props.item);
+            itemsWithoutTheseItem.push(item);
 
             setData(
                 {
@@ -41,8 +42,7 @@ function ItemCount(props) {
                 }
             );
         } else {
-            let itemToAdd = props.item;
-            itemToAdd.quantity = itemToAdd.quantity + itemQty;
+            let itemToAdd = { id: props.itemId, item: props.item, quantity: itemQty };
 
             setData(
                 {
@@ -57,22 +57,21 @@ function ItemCount(props) {
     }
 
     function isOnCart(id) {
-        let product = data.items && data.items.filter((item) => item.id === Number(id));
-        console.log('isOnCart', product);
+        let product = data.items && data.items.filter((item) => item.id === id);
         return product.length ? true : false;
     }
         
     return (
         <div>
-        <div className="s2 itemQty">
-            <button onClick={() => clicker(false)}>-</button>
-            <input type="text" size="1" value={itemQty} readOnly/>
-            <button onClick={() => clicker(true)}>+</button>
+            <div className="s2 itemQty">
+                <button onClick={() => clicker(false)}>-</button>
+                <input type="text" size="1" value={itemQty} readOnly/>
+                <button onClick={() => clicker(true)}>+</button>
+            </div>
+            <div className="card-content">
+                <button className="addWidget" onClick={onAdd}>Agregar al carrito</button>
+            </div>
         </div>
-        <div className="card-content">
-            <button className="addWidget" onClick={onAdd}>Agregar al carrito</button>
-        </div>
-    </div>
     );
   }
   

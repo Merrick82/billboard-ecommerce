@@ -1,0 +1,8 @@
+.customMargin {
+    min-height: 100vh;
+}
+
+.customMargin h2 {
+    margin-right: 20% !important;
+    text-align: center;
+}

@@ -8,7 +8,7 @@ function ItemList(props) {
     const [items, setItems] = useState([]);
     const db = getFirestore();
 
-    const getCategoriesByNameFromDB = () => {
+    const getProductsByCategoryIdFromDB = () => {
         db.collection('products').where("categoryId", "==", props.categoryId).get()
         .then(docs => {
             let arr = [];
@@ -25,7 +25,7 @@ function ItemList(props) {
         }
 
     useEffect(() => {
-        getCategoriesByNameFromDB();
+      getProductsByCategoryIdFromDB();
     }, []);
 
     return (

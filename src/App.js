@@ -3,6 +3,7 @@ import NavBar from './components/navbar/navbar';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import Home from './components/home/home';
+import Checkout from './components/checkout/checkout';
 import Footer from './components/footer/footer';
 import Error404 from './components/error404/index';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -39,6 +40,9 @@ function App() {
             </Route>
             <Route exact path="/cart" component={Cart}>
               <Cart />
+            </Route>
+            <Route exact path="/checkout">
+              <Checkout />
             </Route>
             <Route path="*">
               <Error404 />

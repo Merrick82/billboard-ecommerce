@@ -3,7 +3,6 @@ import './itemDetail.css';
 import ItemCount from '../itemCount/itemCount';
 
 function ItemDetail(props) {
-    console.log('ItemDetail', props.item);
     return (
         <div className="container">
             <div className="movieTitle">

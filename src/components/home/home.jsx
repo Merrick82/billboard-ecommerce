@@ -1,16 +1,31 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import './home.css';
-import {getFeaturedProducts} from '../mockService/mockService.js';
 import {useState, useEffect} from 'react';
 import Item from '../item/item';
+import { getFirestore } from '../../database/dbconf';
 
 function Home() {
-    const mockService = getFeaturedProducts();
     const [items, setItems] = useState([]);
+    const db = getFirestore();
 
-    // Simula consumir una api
+    const getRandomProductsFromDB = () => {
+      db.collection('products').where("categoryId", "==", 'Oyvbi8UDSgROPxy2uOFt').limit(4).get()
+      .then(docs => {
+          let arr = [];
+
+          docs.forEach(doc => {
+            arr.push({
+              id: doc.id, 
+              data: doc.data()
+            });
+          });
+
+          setItems(arr);
+        }).catch(e => console.log(e));
+      }
+
     useEffect(() => {
-        mockService.then(rta => setItems(rta)).catch(error => alert(error));
+      getRandomProductsFromDB();
     }, []);
 
     return (
@@ -19,7 +34,8 @@ function Home() {
         {
             items.length ?
             items.map((item) => (
-                <Item key={item.id} itemId={item.id} title={item.title} price={item.price} stock={item.stock} urlCover={item.urlCover} />
+                <Item key={item.id} itemId={item.id} title={item.data.title} price={item.data.price} 
+                stock={item.data.stock} urlCover={item.data.urlCover} />
             ))
             : <p className="loading">Cargando destacados...</p>
         }
