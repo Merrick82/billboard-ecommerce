@@ -1,0 +1,60 @@
+.align {
+    text-align: center;
+}
+
+.buttons {
+    border-radius: 6px;
+    background-color: #ee6e73;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.grid-example {
+    border: 1px solid black;
+    margin: 7px 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 28px;
+    background-color: white;
+    color: black;
+    padding: 0;
+}
+  
+.custom-col {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+.custom-col h5 {
+    margin-top: 13px;
+} 
+
+.custom-col p {
+    margin: 0;
+}  
+
+.custom-col-close {
+    width: 9%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+.custom-col-img {
+    width: 8%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    object-fit: fill;
+}
+
+.custom-close {
+    margin-bottom: 6px;
+}

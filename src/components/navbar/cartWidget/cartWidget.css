@@ -1,0 +1,13 @@
+.widget-space {
+  padding: 0 15px;
+}
+
+.notification-cart {
+  position: relative;
+  color: black;
+  right: -28px;
+  top: -77px;
+  border-radius: 50%;
+  background: white;
+  padding: 1px 5px;
+}

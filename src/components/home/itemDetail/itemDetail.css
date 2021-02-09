@@ -1,0 +1,16 @@
+.poster {
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+}
+
+.description {
+    text-align: justify;
+}
+
+.title-style {
+    margin-top: auto;
+    text-align: center;
+}

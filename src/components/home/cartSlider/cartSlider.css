@@ -1,0 +1,63 @@
+.cartSlider {
+    height: 100vh;
+    width: 45%;
+    position: fixed;
+    right: -45%;
+    top: 0;
+    background: white;
+    z-index: 2;
+    box-shadow: -0.3rem 0 0.3rem rgba(0, 0, 0, 0.2);
+    transition: right 0.5s;
+}
+
+.cartSlider p {
+    color: black;
+}
+
+.close {
+  right: -45%;
+}
+
+.open {
+  right: 0;
+}
+
+.slider-grid-example {
+  border: 1px solid black;
+  margin: 7px 0;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+  background-color: white;
+  color: black;
+  padding: 0;
+}
+
+.slider-custom-col {
+  width: 33%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.slider-custom-col h6 {
+  margin-top: 13px;
+}
+
+.slider-custom-col p {
+  margin: 0;
+  width: 50% !important;
+}
+
+.align {
+  text-align: center;
+}
+
+.custom-text {
+  font-size: 12px;
+  text-align: center;
+}
+
+.result-text {
+  margin: 0 !important;
+}
